@@ -3,6 +3,11 @@
 yarn install 
 ```
 
+# Run Test with Ganache
+```
+npx hardhat --network ganache test
+```
+
 # Advanced Sample Hardhat Project
 
 This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
