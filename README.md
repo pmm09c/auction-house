@@ -1,6 +1,29 @@
 # Setup
+
+You'll need [node](https://nodejs.org/en/download/) and [yarn](https://yarnpkg.com/getting-started/usage) in order to install and run this repo.  
+
 ```
-yarn install 
+# installing node
+# can either use the installer from nodejs website (probably easiest):
+https://nodejs.org/en/download/
+
+or.. via nvm:
+
+# install nvm with the one-liner here (if on linux or osx, or maybe win with wsl)
+https://github.com/nvm-sh/nvm#install--update-script
+# then use node 16, like:
+nvm use 16
+
+# once node is installed, check that its working, and run:
+node --version
+
+# enable yarn by enabling corepack
+corepack enable
+
+# cd into the repo and install via yarn:
+yarn install
+
+The repo should then be ready to run the `npx` commands within.
 ```
 
 # Run Test with Ganache
