@@ -14,8 +14,10 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
+  // const [deployer] = await ethers.getSigners();
+
   const ERC721 = await ethers.getContractFactory("ERC721AuctionToken");
-  const erc721 = await ERC721.deploy("Auction ERC721","AUC721");
+  const erc721 = await ERC721.deploy("AuctionTokenERC721","AUC721");
   
   await erc721.deployed();
 
