@@ -16,17 +16,15 @@ async function main() {
   // We get the contract to deploy
   //const Greeter = await ethers.getContractFactory("Greeter");
   //const greeter = await Greeter.deploy("Hello, Hardhat!");
-
-  //await greeter.deployed();
-
-    // We get the contract to deploy
+  
+  // We get the contract to deploy
   const Auction = await ethers.getContractFactory("Auction");
   const auction = await Auction.deploy();
   
   await auction.deployed();
 
 //  console.log("Greeter deployed to:", greeter.address);
-  console.log("ERC1155 deployed to:", auction.address);
+  console.log("Auction deployed to:", auction.address);
   
 }
 

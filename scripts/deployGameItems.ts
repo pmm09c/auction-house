@@ -13,11 +13,6 @@ async function main() {
   // manually to make sure everything is compiled
   // await hre.run('compile');
 
-  // We get the contract to deploy
-  //const Greeter = await ethers.getContractFactory("Greeter");
-  //const greeter = await Greeter.deploy("Hello, Hardhat!");
-
-  //await greeter.deployed();
 
     // We get the contract to deploy
   const GameItems = await ethers.getContractFactory("GameItems");
@@ -26,7 +21,7 @@ async function main() {
   await gameItems.deployed();
 
 //  console.log("Greeter deployed to:", greeter.address);
-  console.log("ERC1155 deployed to:", gameItems.address);
+  console.log("ERC1155 GameItems deployed to:", gameItems.address);
   
 }
 
