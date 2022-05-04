@@ -26,6 +26,19 @@ yarn install
 The repo should then be ready to run the `npx` commands within.
 ```
 
+*ENV_VARS*
+
+Setup a `.env` file in the root of the repo, with the following variables:
+
+ETHERSCAN_API_KEY="<to_validate_with_etherscan>"
+PRIVATE_KEY="<your_wallet_private_key>"
+API_KEY="<eg_an_alchemy_api_key>"
+API_URL="<eg_an_alchemy_api_URL>"
+ROPSTEN_URL="<eg_an_alchemy_api_URL_ropsten>"
+CONTRACT_ADDRESS="deployed_contract_address"  // used in the interact script only
+
+
+
 # Run Test with Ganache
 ```
 npx hardhat --network ganache test
