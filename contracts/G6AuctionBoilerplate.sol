@@ -5,15 +5,19 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract MarketplaceBoilerPlate is ReentrancyGuard {
+contract G6AuctionBoilerplate is ReentrancyGuard {
     using Counters for Counters.Counter;
     Counters.Counter private _itemIds;
     Counters.Counter private _itemsSold;
     
      address public owner;
+     string public auctionHouseName;
+
+
      
-     constructor() {
+     constructor(string memory auctionName) {
          owner = msg.sender;
+         auctionHouseName = auctionName;
      }
      
      struct MarketItem {
