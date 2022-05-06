@@ -1,3 +1,4 @@
+typechain-types*
 node_modules
 .env
 coverage
