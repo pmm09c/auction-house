@@ -15,14 +15,14 @@ async function main() {
 
   // We get the contract to deploy
   // const [deployer] = await ethers.getSigners();
-
-  const ERC20 = await ethers.getContractFactory("PugetToken");
-  const erc20 = await ERC20.deploy("PugetToken","PGT");
+  // 
+  const ERC20 = await ethers.getContractFactory("FintechToken");
+  const erc20 = await ERC20.deploy("FintechToken","FTT");
   
   await erc20.deployed();
 
 //  console.log("Greeter deployed to:", greeter.address);
-  console.log("PGT deployed to:", erc20.address);
+  console.log("FTT deployed to:", erc20.address);
   
 }
 
