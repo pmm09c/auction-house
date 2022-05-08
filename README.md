@@ -38,19 +38,35 @@ ROPSTEN_URL="<eg_an_alchemy_api_URL_ropsten>"
 CONTRACT_ADDRESS="deployed_contract_address"  // used in the interact script only
 
 
+## Usage
 
-# Run Test with Ganache
 ```
-npx hardhat --network ganache test
+# start up a local hardhat node with wallets
+npx hardhat node
+
+
+# compile
+npx hardhat compile
+
+# deploy
+npx hardhat run scripts/<deply_script> --network localhost  # or ropsten|rinkeby
+
+# run tests
+npx hardhat run test/<name_of_test> --network localhost  # or ropsten|rinkeby
+
+
+# using react, runs on localhost:3000
+npm start
+
+
+In browser, you should then be able to view web site on localhost:3000 and interact with deployed contract
+A few buttons for reading are wired up. See output in the chrome developer tools console output
+
 ```
 
-# Advanced Sample Hardhat Project
 
-This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
 
-The project comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts. It also comes with a variety of other tools, preconfigured to work with the project code.
-
-Try running some of the following tasks:
+## Some hardhat commands
 
 ```shell
 npx hardhat accounts
@@ -86,7 +102,3 @@ Then, copy the deployment address and paste it in to replace `DEPLOYED_CONTRACT_
 ```shell
 npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS "Hello, Hardhat!"
 ```
-
-# Performance optimizations
-
-For faster runs of your tests and scripts, consider skipping ts-node's type checking by setting the environment variable `TS_NODE_TRANSPILE_ONLY` to `1` in hardhat's environment. For more details see [the documentation](https://hardhat.org/guides/typescript.html#performance-optimizations).
