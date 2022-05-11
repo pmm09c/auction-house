@@ -1,20 +1,40 @@
-# Setup
+# Modern Distributed Application Development
+Fintech Project 3 - Building a web3 application using modern techniques.  
 
-You'll need [node](https://nodejs.org/en/download/) and [yarn](https://yarnpkg.com/getting-started/usage) in order to install and run this repo.  
+---
 
+## Project Overview  
+Using a marketplace of ERC tokens as a guiding light, this project is a learning and building journey for how to setup, build, deploy and interact with a web3 application using modern development techniques.  
+
+Specifically, using [solidity](https://docs.soliditylang.org/en/v0.8.13/), [ERC-20](./contracts/ERC20token.sol), [ERC-721](./contracts/), and [ERC-1155](./contracts/ERC1155Items.sol) contracts were authored and deployed to a the [rinkeby](https://www.rinkeby.io/#stats) testnet. Additionally, a [marketplace](./contracts/G6AuctionBoilerplate.sol) contract was deployed.  Tokens were minted, and items were to be listed for sale on the marketplace.  Lastly a primative [javascript script](./scripts/interact.js) and [web view](./src/App.js) was proven out to be able to interact with the contracts.  
+
+See [setup](#setup) and [usage](#usage) below for details on how to work with this repository.  
+
+See [Technologies Used](#technologies-used) for details on technologies used to build, deploy, interact.  
+
+## Technologies Used  
+- [Hardhat](https://hardhat.org/) , development environment for compilation, testing, deploying, verifying contracts
+- [Solidity](https://docs.soliditylang.org/en/v0.8.13/) , language for authoring smart contracts
+- [Typescript](https://www.typescriptlang.org/) , language for authoring deploy, test, view/interactive scripts
+- [Alchemy](https://www.alchemy.com/) , for hosting deployed app on testnet
+- [Rinkeby](https://www.rinkeby.io/#stats) , an ethereum testnet
+- [Pinata](https://www.pinata.cloud/) , for hosting images of minted tokens/nfts
+- [Etherscan](https://etherscan.io/) , for viewing transactions/contracts on chain, also can interact if verified
+- [React](https://reactjs.org/), for authoring web view
+- [ethers.js](https://docs.ethers.io/v5/) , library for use in scripts/web to interact with contracts programatically
+- [node.js](https://nodejs.org/en/download/), framework for managing local environment, and runtime for typescript/javaascript
+
+
+## Setup
+
+You'll need [node](https://nodejs.org/en/download/) and [yarn](https://yarnpkg.com/getting-started/usage) in order to work with this repo.  
+
+### Install Node
+- Download and run the [NodeJs Installer](https://nodejs.org/en/download/) for your os
+
+### Verify Installation, and install repo
 ```
-# installing node
-# can either use the installer from nodejs website (probably easiest):
-https://nodejs.org/en/download/
-
-or.. via nvm:
-
-# install nvm with the one-liner here (if on linux or osx, or maybe win with wsl)
-https://github.com/nvm-sh/nvm#install--update-script
-# then use node 16, like:
-nvm use 16
-
-# once node is installed, check that its working, and run:
+## should output version of node
 node --version
 
 # enable yarn by enabling corepack
@@ -23,82 +43,59 @@ corepack enable
 # cd into the repo and install via yarn:
 yarn install
 
-The repo should then be ready to run the `npx` commands within.
+The repo should then be ready to run the various `npx` commands within.
 ```
 
-*ENV_VARS*
+### .env file setup
+To deploy to a testnet, interact with your wallet and or deployed contract(s), you must put in values into an `.env` file at the root of the repo. Some key values:  
 
-Setup a `.env` file in the root of the repo, with the following variables:
-
+```
 ETHERSCAN_API_KEY="<to_validate_with_etherscan>"
 PRIVATE_KEY="<your_wallet_private_key>"
 API_KEY="<eg_an_alchemy_api_key>"
 API_URL="<eg_an_alchemy_api_URL>"
 ROPSTEN_URL="<eg_an_alchemy_api_URL_ropsten>"
 CONTRACT_ADDRESS="deployed_contract_address"  // used in the interact script only
-
+```
 
 ## Usage
 
+Some key npx commands for working with hardhat:  
+
 ```
-# start up a local hardhat node with wallets
+# start up a local hardhat node with wallets and test ETH
 npx hardhat node
 
-
-# compile
+# compile contracts
 npx hardhat compile
 
-# deploy
+# deploy to localhost node
 npx hardhat run scripts/<deply_script> --network localhost  # or ropsten|rinkeby
 
-# run tests
+# deploy to testnet
+npx hardhat run scripts/<deply_script> --network ropsten|rinkeby
+
+# run test(s)
 npx hardhat run test/<name_of_test> --network localhost  # or ropsten|rinkeby
 
+# verify contract on Etherscan
+npx hardhat verify --network rinkeby|ropsten <DEPLOYED_CONTRACT_ADDRESS>
 
-# using react, runs on localhost:3000
+# run react server/pages, runs on localhost:3000
 npm start
 
-
-In browser, you should then be able to view web site on localhost:3000 and interact with deployed contract
-A few buttons for reading are wired up. See output in the chrome developer tools console output
-
 ```
 
+## Contributors
 
+[Peter Morales](https://github.com/pmm09c)  
+[Shivangi Gupta](https://github.com/shivangiuw)   
+[Rupika Ranjan](https://github.com/rupikaranjan)  
+[Jaime Aranda](https://github.com/Aranda80)  
+[David Lopez](https://github.com/sububer)  
 
-## Some hardhat commands
+---
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-npx hardhat help
-REPORT_GAS=true npx hardhat test
-npx hardhat coverage
-npx hardhat run scripts/deploy.ts
-TS_NODE_FILES=true npx ts-node scripts/deploy.ts
-npx eslint '**/*.{js,ts}'
-npx eslint '**/*.{js,ts}' --fix
-npx prettier '**/*.{json,sol,md}' --check
-npx prettier '**/*.{json,sol,md}' --write
-npx solhint 'contracts/**/*.sol'
-npx solhint 'contracts/**/*.sol' --fix
-```
+## License
 
-# Etherscan verification
-
-To try out Etherscan verification, you first need to deploy a contract to an Ethereum network that's supported by Etherscan, such as Ropsten.
-
-In this project, copy the .env.example file to a file named .env, and then edit it to fill in the details. Enter your Etherscan API key, your Ropsten node URL (eg from Alchemy), and the private key of the account which will send the deployment transaction. With a valid .env file in place, first deploy your contract:
-
-```shell
-hardhat run --network ropsten scripts/deploy.ts
-```
-
-Then, copy the deployment address and paste it in to replace `DEPLOYED_CONTRACT_ADDRESS` in this command:
-
-```shell
-npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS "Hello, Hardhat!"
-```
+MIT
