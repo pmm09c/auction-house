@@ -8,6 +8,8 @@ Using a marketplace of ERC tokens as a guiding light, this project is a learning
 
 Specifically, using [solidity](https://docs.soliditylang.org/en/v0.8.13/), [ERC-20](./contracts/ERC20token.sol), [ERC-721](./contracts/), and [ERC-1155](./contracts/ERC1155Items.sol) contracts were authored and deployed to a the [rinkeby](https://www.rinkeby.io/#stats) testnet. Additionally, a [marketplace](./contracts/G6AuctionBoilerplate.sol) contract was deployed.  Tokens were minted, and items were to be listed for sale on the marketplace.  Lastly a primative [javascript script](./scripts/interact.js) and [web view](./src/App.js) was proven out to be able to interact with the contracts.  
 
+[Presentation slides](media/g6_marketplace_preso.pdf)  
+
 See [setup](#setup) and [usage](#usage) below for details on how to work with this repository.  
 
 See [Technologies Used](#technologies-used) for details on technologies used to build, deploy, interact.  
